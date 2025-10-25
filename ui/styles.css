@@ -1,0 +1,145 @@
+/* Custom CSS for AI Agent Chat UI */
+
+/* Main container styling */
+.main {
+    padding: 1rem;
+}
+
+/* Chat message styling */
+.stChatMessage {
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* User message styling */
+.stChatMessage[data-testid="user-message"] {
+    background-color: rgba(31, 119, 180, 0.1);
+    border-left: 4px solid #1f77b4;
+}
+
+/* Assistant message styling */
+.stChatMessage[data-testid="assistant-message"] {
+    background-color: rgba(44, 160, 101, 0.1);
+    border-left: 4px solid #2ca065;
+}
+
+/* Sidebar styling */
+.css-1d391kg {
+    padding-top: 2rem;
+}
+
+/* Button styling */
+.stButton > button {
+    width: 100%;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Quick calculator button styling */
+.quick-calc-button {
+    margin-bottom: 0.5rem;
+}
+
+/* Text input styling */
+.stTextInput > div > div > input {
+    border-radius: 8px;
+}
+
+/* Download button styling */
+.stDownloadButton > button {
+    background-color: #2ca065;
+    color: white;
+    border: none;
+}
+
+.stDownloadButton > button:hover {
+    background-color: #238a54;
+}
+
+/* Expander styling */
+.streamlit-expanderHeader {
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+/* Metric styling */
+.stMetric {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+    .stMetric {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Chat input styling */
+.stChatInputContainer {
+    border-radius: 8px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.stChatInputContainer:focus-within {
+    border-color: #1f77b4;
+}
+
+/* Success/info/warning boxes */
+.stSuccess, .stInfo, .stWarning {
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+/* Divider styling */
+hr {
+    margin: 2rem 0;
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+/* Code block styling */
+code {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Spinner styling */
+.stSpinner > div {
+    border-color: #1f77b4 transparent transparent transparent;
+}
+
+/* Custom scrollbar for chat history */
+.chat-history::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-history::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.chat-history::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.chat-history::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
