@@ -1,0 +1,27 @@
+# Copy this file to terraform.tfvars and fill in your values
+
+# Required: Your GCP Project ID
+project_id = "your-gcp-project-id"
+
+# Optional: Override defaults if needed
+region                = "us-central1"
+vertex_ai_location    = "us-central1"
+mcp_server_name       = "mcp-calculator-server"
+vertex_ai_agent_name  = "customer-support-agent"
+agent_display_name    = "Customer Support Agent"
+
+# Set to true if you want the MCP server publicly accessible (not recommended)
+enable_public_access = false
+
+# Add service accounts that should be able to invoke the MCP server
+# The Vertex AI agent service account will be added automatically
+allowed_service_accounts = [
+  # "your-service-account@your-project.iam.gserviceaccount.com"
+]
+
+# Custom labels for resources
+labels = {
+  environment = "production"
+  managed-by  = "terraform"
+  project     = "mcp-calculator"
+}

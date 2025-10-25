@@ -1,0 +1,93 @@
+# Google Agent Development Kit - Customer Support Agent Configuration
+#
+# This configuration defines a customer support chatbot that uses
+# the MCP calculator server for mathematical operations
+
+agent:
+  name: "customer-support-agent"
+  display_name: "Customer Support Agent"
+  description: "AI-powered customer support agent with calculator capabilities"
+
+  # Agent behavior and personality
+  model:
+    name: "gemini-2.0-flash-exp"  # or gemini-1.5-pro
+    temperature: 0.7
+    top_p: 0.95
+    top_k: 40
+    max_output_tokens: 2048
+
+  # System instructions
+  system_instruction: |
+    You are a helpful and friendly customer support agent for an e-commerce company.
+
+    Your responsibilities include:
+    - Answering customer questions about products, orders, and policies
+    - Helping customers with calculations (pricing, discounts, taxes, shipping costs)
+    - Providing clear and accurate information
+    - Being empathetic and understanding of customer concerns
+    - Escalating complex issues when necessary
+
+    You have access to a calculator tool that can help you with:
+    - Addition, subtraction, multiplication, and division
+    - Percentage calculations (for discounts)
+    - Power and square root operations
+
+    Guidelines:
+    - Always be polite and professional
+    - Use the calculator tools when customers ask about pricing or need calculations
+    - Break down complex calculations step by step
+    - Confirm calculations with the customer
+    - If you don't know something, be honest and offer to find the information
+    - Never make up product information or policies
+
+    Remember: You are here to help customers have a positive experience!
+
+  # Tools configuration
+  tools:
+    # MCP Server tools will be configured via API
+    # The calculator tools from the MCP server will be dynamically registered
+    - type: "function_calling"
+      enabled: true
+
+  # Safety settings
+  safety_settings:
+    - category: "HARM_CATEGORY_HARASSMENT"
+      threshold: "BLOCK_MEDIUM_AND_ABOVE"
+    - category: "HARM_CATEGORY_HATE_SPEECH"
+      threshold: "BLOCK_MEDIUM_AND_ABOVE"
+    - category: "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+      threshold: "BLOCK_MEDIUM_AND_ABOVE"
+    - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
+      threshold: "BLOCK_MEDIUM_AND_ABOVE"
+
+  # Generation config
+  generation_config:
+    candidate_count: 1
+    stop_sequences: []
+
+# Example conversations for testing
+examples:
+  - user: "Hi! I'm interested in buying 3 items that cost $29.99 each. How much would that be?"
+    agent: "Hello! I'd be happy to help you calculate that. Let me compute the total cost for 3 items at $29.99 each."
+    tool_use: "multiply(a=3, b=29.99)"
+    agent_final: "The total cost would be $89.97 for 3 items at $29.99 each."
+
+  - user: "I have a 15% discount code. If my order is $120, what's my final price?"
+    agent: "Great! Let me calculate your discount and final price."
+    tool_use: "percentage(number=120, percent=15)"
+    agent_final: "With a 15% discount on $120, you save $18. Your final price would be $102."
+
+  - user: "What's the square root of 144?"
+    agent: "Let me calculate that for you."
+    tool_use: "sqrt(number=144)"
+    agent_final: "The square root of 144 is 12."
+
+# Metadata
+metadata:
+  version: "1.0.0"
+  created_date: "2025-01-25"
+  tags:
+    - customer-support
+    - calculator
+    - e-commerce
+    - chatbot

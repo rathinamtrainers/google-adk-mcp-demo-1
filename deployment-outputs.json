@@ -1,0 +1,57 @@
+{
+  "agent_configuration": {
+    "sensitive": false,
+    "type": [
+      "object",
+      {
+        "display_name": "string",
+        "location": "string",
+        "mcp_server_url": "string",
+        "name": "string",
+        "service_account": "string"
+      }
+    ],
+    "value": {
+      "display_name": "Customer Support Agent",
+      "location": "us-central1",
+      "mcp_server_url": "https://mcp-calculator-server-oyhyp5p3ua-uc.a.run.app",
+      "name": "customer-support-agent",
+      "service_account": "customer-support-agent-sa@agentic-ai-batch-2025.iam.gserviceaccount.com"
+    }
+  },
+  "artifact_registry_repo_url": {
+    "sensitive": false,
+    "type": "string",
+    "value": "us-central1-docker.pkg.dev/agentic-ai-batch-2025/mcp-servers"
+  },
+  "docker_image_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "us-central1-docker.pkg.dev/agentic-ai-batch-2025/mcp-servers/mcp-calculator:latest"
+  },
+  "mcp_server_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "mcp-calculator-server"
+  },
+  "mcp_server_service_account": {
+    "sensitive": false,
+    "type": "string",
+    "value": "mcp-calculator-server-sa@agentic-ai-batch-2025.iam.gserviceaccount.com"
+  },
+  "mcp_server_url": {
+    "sensitive": false,
+    "type": "string",
+    "value": "https://mcp-calculator-server-oyhyp5p3ua-uc.a.run.app"
+  },
+  "next_steps": {
+    "sensitive": false,
+    "type": "string",
+    "value": "\nNext Steps:\n===========\n1. Build and push the Docker image:\n   cd ../mcp-server\n   gcloud builds submit --tag us-central1-docker.pkg.dev/agentic-ai-batch-2025/mcp-servers/mcp-calculator:latest\n\n2. Update Cloud Run service with the new image (Terraform lifecycle will handle this)\n\n3. Deploy the Vertex AI agent using the deployment script:\n   cd ../scripts\n   ./deploy-agent.sh\n\n4. Test the MCP server:\n   curl https://mcp-calculator-server-oyhyp5p3ua-uc.a.run.app/health\n   curl https://mcp-calculator-server-oyhyp5p3ua-uc.a.run.app/tools\n\n"
+  },
+  "vertex_ai_agent_service_account": {
+    "sensitive": false,
+    "type": "string",
+    "value": "customer-support-agent-sa@agentic-ai-batch-2025.iam.gserviceaccount.com"
+  }
+}
