@@ -1,0 +1,317 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!-- Title -->
+  <text x="600" y="30" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1a1a1a">
+    MCP Calculator Server + Vertex AI Agent Architecture
+  </text>
+
+  <!-- User/Developer Layer -->
+  <g id="user-layer">
+    <!-- User Icon -->
+    <rect x="50" y="80" width="200" height="120" rx="10" fill="#e8f4f8" stroke="#4a90a4" stroke-width="2"/>
+    <text x="150" y="110" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c5f6f">
+      👤 User / Developer
+    </text>
+    <text x="150" y="135" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555">
+      Interacts via:
+    </text>
+    <text x="150" y="155" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • Browser (Streamlit UI)
+    </text>
+    <text x="150" y="175" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • Vertex AI Console
+    </text>
+  </g>
+
+  <!-- Streamlit UI Layer -->
+  <g id="streamlit-layer">
+    <rect x="50" y="240" width="280" height="180" rx="10" fill="#f0f8ff" stroke="#6495ed" stroke-width="3"/>
+    <text x="190" y="270" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#1e3a8a">
+      Streamlit UI
+    </text>
+    <text x="190" y="290" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      ui/app.py
+    </text>
+
+    <rect x="70" y="305" width="240" height="100" rx="5" fill="#fff" stroke="#6495ed" stroke-width="1"/>
+    <text x="190" y="325" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">
+      Features:
+    </text>
+    <text x="190" y="345" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • Interactive chat interface
+    </text>
+    <text x="190" y="365" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • Quick calculator buttons
+    </text>
+    <text x="190" y="385" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • Chat history export (TXT/JSON)
+    </text>
+  </g>
+
+  <!-- Vertex AI Agent Layer -->
+  <g id="vertex-layer">
+    <rect x="450" y="240" width="320" height="180" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="3"/>
+    <text x="610" y="270" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#1b5e20">
+      Vertex AI Agent Engine
+    </text>
+    <text x="610" y="290" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      agent/deploy_agent.py
+    </text>
+
+    <rect x="470" y="305" width="260" height="100" rx="5" fill="#fff" stroke="#4caf50" stroke-width="1"/>
+    <text x="600" y="325" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">
+      Customer Support Agent
+    </text>
+    <text x="600" y="345" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • Model: Gemini 2.0 Flash
+    </text>
+    <text x="600" y="365" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • Function calling enabled
+    </text>
+    <text x="600" y="385" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • Safety settings configured
+    </text>
+  </g>
+
+  <!-- MCP Server Layer -->
+  <g id="mcp-layer">
+    <rect x="850" y="240" width="300" height="180" rx="10" fill="#fff3e0" stroke="#ff9800" stroke-width="3"/>
+    <text x="1000" y="270" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#e65100">
+      MCP Server (Cloud Run)
+    </text>
+    <text x="1000" y="290" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      mcp-server/src/
+    </text>
+
+    <rect x="870" y="305" width="260" height="100" rx="5" fill="#fff" stroke="#ff9800" stroke-width="1"/>
+    <text x="1000" y="325" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">
+      FastAPI HTTP/SSE Transport
+    </text>
+    <text x="1000" y="345" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • 7 Calculator tools (add, subtract, etc.)
+    </text>
+    <text x="1000" y="365" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • Auto-scaling (0-10 instances)
+    </text>
+    <text x="1000" y="385" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • Health check endpoints
+    </text>
+  </g>
+
+  <!-- RBAC System Layer -->
+  <g id="rbac-layer">
+    <rect x="850" y="450" width="300" height="160" rx="10" fill="#fce4ec" stroke="#e91e63" stroke-width="3"/>
+    <text x="1000" y="480" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#880e4f">
+      RBAC System
+    </text>
+    <text x="1000" y="500" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      mcp-server/src/auth/ &amp; rbac/
+    </text>
+
+    <rect x="870" y="515" width="260" height="80" rx="5" fill="#fff" stroke="#e91e63" stroke-width="1"/>
+    <text x="1000" y="535" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • JWT &amp; API Key authentication
+    </text>
+    <text x="1000" y="555" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • Role-based permissions (admin/user/viewer)
+    </text>
+    <text x="1000" y="575" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#555">
+      • Audit logging &amp; IP whitelisting
+    </text>
+  </g>
+
+  <!-- Infrastructure Layer -->
+  <g id="infrastructure-layer">
+    <rect x="50" y="650" width="1100" height="200" rx="10" fill="#f5f5f5" stroke="#616161" stroke-width="3"/>
+    <text x="600" y="680" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#212121">
+      Google Cloud Infrastructure (Terraform)
+    </text>
+    <text x="600" y="700" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#666">
+      terraform/
+    </text>
+
+    <!-- Artifact Registry -->
+    <rect x="80" y="720" width="200" height="100" rx="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+    <text x="180" y="745" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#0d47a1">
+      Artifact Registry
+    </text>
+    <text x="180" y="765" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      Docker image storage
+    </text>
+    <text x="180" y="785" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      mcp-calculator:latest
+    </text>
+    <text x="180" y="805" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      Cloud Build integration
+    </text>
+
+    <!-- Cloud Run -->
+    <rect x="310" y="720" width="200" height="100" rx="5" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
+    <text x="410" y="745" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#1b5e20">
+      Cloud Run Service
+    </text>
+    <text x="410" y="765" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      mcp-calculator-server
+    </text>
+    <text x="410" y="785" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      CPU: 1, Memory: 512Mi
+    </text>
+    <text x="410" y="805" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      HTTPS only
+    </text>
+
+    <!-- IAM & Service Accounts -->
+    <rect x="540" y="720" width="200" height="100" rx="5" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+    <text x="640" y="745" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#e65100">
+      IAM &amp; Security
+    </text>
+    <text x="640" y="765" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      Service Accounts:
+    </text>
+    <text x="640" y="785" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      • MCP Server SA
+    </text>
+    <text x="640" y="805" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      • Vertex AI Agent SA
+    </text>
+
+    <!-- APIs Enabled -->
+    <rect x="770" y="720" width="200" height="100" rx="5" fill="#fce4ec" stroke="#c2185b" stroke-width="2"/>
+    <text x="870" y="745" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#880e4f">
+      Enabled APIs
+    </text>
+    <text x="870" y="765" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      • Cloud Run API
+    </text>
+    <text x="870" y="785" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      • Artifact Registry API
+    </text>
+    <text x="870" y="805" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      • Vertex AI API
+    </text>
+
+    <!-- Monitoring -->
+    <rect x="1000" y="720" width="120" height="100" rx="5" fill="#e0e0e0" stroke="#616161" stroke-width="2"/>
+    <text x="1060" y="745" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#212121">
+      Monitoring
+    </text>
+    <text x="1060" y="765" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      • Logging
+    </text>
+    <text x="1060" y="785" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      • Metrics
+    </text>
+    <text x="1060" y="805" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#555">
+      • Traces
+    </text>
+  </g>
+
+  <!-- Arrows and Connections -->
+
+  <!-- User to Streamlit -->
+  <path d="M 150 200 L 150 240" stroke="#4a90a4" stroke-width="3" fill="none" marker-end="url(#arrowblue)"/>
+
+  <!-- Streamlit to Vertex AI -->
+  <path d="M 330 330 L 450 330" stroke="#6495ed" stroke-width="3" fill="none" marker-end="url(#arrowgreen)"/>
+  <text x="390" y="320" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">
+    agent.query()
+  </text>
+
+  <!-- Vertex AI to MCP Server -->
+  <path d="M 770 330 L 850 330" stroke="#4caf50" stroke-width="3" fill="none" marker-end="url(#arroworange)"/>
+  <text x="810" y="320" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">
+    HTTPS/SSE
+  </text>
+
+  <!-- MCP Server to RBAC -->
+  <path d="M 1000 420 L 1000 450" stroke="#ff9800" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#arrowpink)"/>
+  <text x="1035" y="440" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">
+    Auth
+  </text>
+
+  <!-- Infrastructure to MCP Server -->
+  <path d="M 1000 650 L 1000 610" stroke="#616161" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+  <text x="1040" y="635" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">
+    Deploys
+  </text>
+
+  <!-- Infrastructure to Vertex AI -->
+  <path d="M 450 650 L 550 610" stroke="#616161" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+
+  <!-- Infrastructure to Streamlit (local) -->
+  <path d="M 190 650 L 190 420" stroke="#616161" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+  <text x="210" y="540" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">
+    Local Dev
+  </text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowblue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a90a4" />
+    </marker>
+    <marker id="arrowgreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4caf50" />
+    </marker>
+    <marker id="arroworange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff9800" />
+    </marker>
+    <marker id="arrowpink" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e91e63" />
+    </marker>
+  </defs>
+
+  <!-- Legend -->
+  <g id="legend">
+    <rect x="380" y="460" width="340" height="160" rx="5" fill="#fff" stroke="#999" stroke-width="2"/>
+    <text x="550" y="485" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">
+      Data Flow
+    </text>
+
+    <line x1="400" y1="505" x2="450" y2="505" stroke="#6495ed" stroke-width="3" marker-end="url(#arrowgreen)"/>
+    <text x="460" y="510" font-family="Arial, sans-serif" font-size="11" fill="#555">
+      User query via Streamlit
+    </text>
+
+    <line x1="400" y1="530" x2="450" y2="530" stroke="#4caf50" stroke-width="3" marker-end="url(#arroworange)"/>
+    <text x="460" y="535" font-family="Arial, sans-serif" font-size="11" fill="#555">
+      Agent calls MCP tools
+    </text>
+
+    <line x1="400" y1="555" x2="450" y2="555" stroke="#ff9800" stroke-width="3"/>
+    <text x="460" y="560" font-family="Arial, sans-serif" font-size="11" fill="#555">
+      Tool execution response
+    </text>
+
+    <line x1="400" y1="580" x2="450" y2="580" stroke="#616161" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="460" y="585" font-family="Arial, sans-serif" font-size="11" fill="#555">
+      Infrastructure management
+    </text>
+
+    <text x="550" y="610" font-family="Arial, sans-serif" font-size="10" font-style="italic" text-anchor="middle" fill="#888">
+      All deployed using Terraform IaC
+    </text>
+  </g>
+
+  <!-- Calculator Tools Box -->
+  <g id="tools-box">
+    <rect x="50" y="460" width="280" height="150" rx="10" fill="#e1f5fe" stroke="#0277bd" stroke-width="2"/>
+    <text x="190" y="485" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#01579b">
+      📊 Calculator Tools (7)
+    </text>
+
+    <text x="70" y="510" font-family="Arial, sans-serif" font-size="11" fill="#555">
+      • add(a, b) - Add two numbers
+    </text>
+    <text x="70" y="530" font-family="Arial, sans-serif" font-size="11" fill="#555">
+      • subtract(a, b) - Subtract numbers
+    </text>
+    <text x="70" y="550" font-family="Arial, sans-serif" font-size="11" fill="#555">
+      • multiply(a, b) - Multiply numbers
+    </text>
+    <text x="70" y="570" font-family="Arial, sans-serif" font-size="11" fill="#555">
+      • divide(a, b) - Divide numbers
+    </text>
+    <text x="70" y="590" font-family="Arial, sans-serif" font-size="11" fill="#555">
+      • power, sqrt, percentage
+    </text>
+  </g>
+</svg>
