@@ -1,36 +1,33 @@
 """
-HTTP/SSE Server wrapper for MCP Calculator Server
-Enables Cloud Run deployment with HTTP transport
+HTTP Server wrapper for FastMCP Calculator Server
+Provides simple REST endpoints for Cloud Run deployment
 """
-import asyncio
-import json
 import logging
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
-from fastapi.responses import StreamingResponse, JSONResponse
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from mcp.server import Server
-from mcp.types import Tool, TextContent, ImageContent, EmbeddedResource
-from calculator_server import list_tools as get_tools, call_tool as execute_tool
+# Import the FastMCP server and tool functions
+from calculator_server import server as mcp_server, add, subtract, multiply, divide, power, sqrt, percentage
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Create MCP server instance
-mcp_server = Server("calculator-mcp-server")
-
-# Register handlers
-@mcp_server.list_tools()
-async def list_tools_handler() -> list[Tool]:
-    return await get_tools()
-
-@mcp_server.call_tool()
-async def call_tool_handler(name: str, arguments: dict) -> list[TextContent | ImageContent | EmbeddedResource]:
-    return await execute_tool(name, arguments)
+# Map tool names to functions
+TOOL_FUNCTIONS = {
+    "add": add,
+    "subtract": subtract,
+    "multiply": multiply,
+    "divide": divide,
+    "power": power,
+    "sqrt": sqrt,
+    "percentage": percentage
+}
 
 
 @asynccontextmanager
@@ -44,7 +41,7 @@ async def lifespan(app: FastAPI):
 # Create FastAPI app
 app = FastAPI(
     title="MCP Calculator Server",
-    description="Calculator tools exposed via MCP over HTTP",
+    description="Calculator tools exposed via simple REST API",
     version="1.0.0",
     lifespan=lifespan
 )
@@ -79,15 +76,17 @@ async def health_check():
 async def list_tools():
     """List available calculator tools."""
     try:
-        tools = await list_tools_handler()
+        # Get tools from FastMCP server
+        tools_list = mcp_server.list_tools()
+
         return {
             "tools": [
                 {
-                    "name": tool.name,
-                    "description": tool.description,
-                    "inputSchema": tool.inputSchema
+                    "name": tool["name"],
+                    "description": tool["description"],
+                    "inputSchema": tool.get("inputSchema", {})
                 }
-                for tool in tools
+                for tool in tools_list
             ]
         }
     except Exception as e:
@@ -107,22 +106,28 @@ async def call_tool(tool_name: str, request: Request):
 
         logger.info(f"Calling tool: {tool_name} with arguments: {arguments}")
 
-        result = await call_tool_handler(tool_name, arguments)
+        # Get the tool function
+        tool_func = TOOL_FUNCTIONS.get(tool_name)
+        if not tool_func:
+            return JSONResponse(
+                status_code=404,
+                content={"error": f"Tool '{tool_name}' not found"}
+            )
 
-        # Convert result to JSON-serializable format
-        response = {
+        # Call the tool function directly
+        result = tool_func(**arguments)
+
+        return {
             "tool": tool_name,
-            "result": [
-                {
-                    "type": content.type,
-                    "text": content.text if hasattr(content, 'text') else str(content)
-                }
-                for content in result
-            ]
+            "result": result
         }
 
-        return response
-
+    except TypeError as e:
+        logger.error(f"Invalid arguments for tool {tool_name}: {e}")
+        return JSONResponse(
+            status_code=400,
+            content={"error": f"Invalid arguments: {str(e)}"}
+        )
     except Exception as e:
         logger.error(f"Error calling tool {tool_name}: {e}")
         return JSONResponse(
@@ -132,7 +137,7 @@ async def call_tool(tool_name: str, request: Request):
 
 
 @app.post("/execute")
-async def execute_tool_batch(request: Request):
+async def execute_tool(request: Request):
     """Execute tool with full MCP-style request."""
     try:
         body = await request.json()
@@ -147,19 +152,28 @@ async def execute_tool_batch(request: Request):
 
         logger.info(f"Executing tool: {tool_name} with arguments: {arguments}")
 
-        result = await call_tool_handler(tool_name, arguments)
+        # Get the tool function
+        tool_func = TOOL_FUNCTIONS.get(tool_name)
+        if not tool_func:
+            return JSONResponse(
+                status_code=404,
+                content={"error": f"Tool '{tool_name}' not found"}
+            )
+
+        # Call the tool function directly
+        result = tool_func(**arguments)
 
         return {
             "tool": tool_name,
-            "result": [
-                {
-                    "type": content.type,
-                    "text": content.text if hasattr(content, 'text') else str(content)
-                }
-                for content in result
-            ]
+            "result": result
         }
 
+    except TypeError as e:
+        logger.error(f"Invalid arguments: {e}")
+        return JSONResponse(
+            status_code=400,
+            content={"error": f"Invalid arguments: {str(e)}"}
+        )
     except Exception as e:
         logger.error(f"Error executing tool: {e}")
         return JSONResponse(
@@ -169,8 +183,8 @@ async def execute_tool_batch(request: Request):
 
 
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get("PORT", 8080))
+    logger.info(f"Starting HTTP server on port {port}")
     uvicorn.run(
         "http_server:app",
         host="0.0.0.0",

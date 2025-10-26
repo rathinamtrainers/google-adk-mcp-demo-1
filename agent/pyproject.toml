@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "calculator-agent"
+version = "1.0.0"
+description = "Customer support agent with MCP calculator tools"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Agentic AI", email = "agenticai@localhost"}
+]
+keywords = [
+    "google-adk",
+    "vertex-ai",
+    "mcp",
+    "calculator",
+    "customer-support",
+    "chatbot"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "google-adk>=0.1.0",
+    "google-cloud-aiplatform>=1.70.0",
+    "vertexai>=1.70.0",
+    "mcp>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[tool.setuptools]
+packages = ["calculator_agent"]
+
+[tool.setuptools.package-data]
+calculator_agent = ["*.txt", "*.yaml"]

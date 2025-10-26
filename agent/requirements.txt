@@ -1,0 +1,9 @@
+# Google AI Development Kit (includes vertexai and google-cloud-aiplatform)
+google-adk>=0.1.0
+
+# Required for MCP tools
+mcp>=1.0.0
+
+# Configuration and utilities
+python-dotenv>=1.0.0
+pyyaml>=6.0.0
